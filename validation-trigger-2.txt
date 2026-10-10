@@ -1,1 +1,0 @@
-Second temporary trigger for the offline detector unit-test workflow. This file is confined to the validation-only branch.
