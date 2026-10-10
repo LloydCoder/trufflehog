@@ -22,7 +22,9 @@ jobs:
           go-version: "1.27"
           cache: true
       - name: Check Go formatting
-        run: |\n          gofmt -d pkg/common/http_verify.go pkg/common/http_verify_test.go pkg/detectors/flutterwave/flutterwave.go pkg/detectors/flutterwave/flutterwave_test.go pkg/detectors/paystack/paystack.go pkg/detectors/paystack/paystack_test.go\n          test -z "$(gofmt -l pkg/common/http_verify.go pkg/common/http_verify_test.go pkg/detectors/flutterwave/flutterwave.go pkg/detectors/flutterwave/flutterwave_test.go pkg/detectors/paystack/paystack.go pkg/detectors/paystack/paystack_test.go)"
+        run: |
+          gofmt -d pkg/common/http_verify.go pkg/common/http_verify_test.go pkg/detectors/flutterwave/flutterwave.go pkg/detectors/flutterwave/flutterwave_test.go pkg/detectors/paystack/paystack.go pkg/detectors/paystack/paystack_test.go
+          test -z "$(gofmt -l pkg/common/http_verify.go pkg/common/http_verify_test.go pkg/detectors/flutterwave/flutterwave.go pkg/detectors/flutterwave/flutterwave_test.go pkg/detectors/paystack/paystack.go pkg/detectors/paystack/paystack_test.go)"
       - name: Test shared bearer verification
         run: go test ./pkg/common -run TestVerifyBearerToken -count=1
       - name: Test Flutterwave detector
