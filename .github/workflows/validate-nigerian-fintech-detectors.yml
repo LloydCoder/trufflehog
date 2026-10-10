@@ -21,7 +21,9 @@ jobs:
         with:
           go-version: "1.27"
           cache: true
+      - name: Test shared bearer verification
+        run: go test ./pkg/common -run TestVerifyBearerToken -count=1
       - name: Test Flutterwave detector
-        run: go test ./pkg/detectors/flutterwave -tags=detectors -run 'TestFlutterWave_Pattern|TestVerifyFlutterwave'
+        run: go test ./pkg/detectors/flutterwave -tags=detectors -run 'TestFlutterWave_Pattern|TestFlutterwaveVerificationUsesInjectedClient' -count=1
       - name: Test Paystack detector
-        run: go test ./pkg/detectors/paystack -tags=detectors -run 'TestPaystack_Pattern|TestVerifyPaystack'
+        run: go test ./pkg/detectors/paystack -tags=detectors -run 'TestPaystack_Pattern|TestPaystackVerificationUsesInjectedClient' -count=1
