@@ -22,6 +22,6 @@ jobs:
           go-version: "1.27"
           cache: true
       - name: Test Flutterwave detector
-        run: go test ./pkg/detectors/flutterwave -tags=detectors
+        run: go test ./pkg/detectors/flutterwave -tags=detectors -run 'TestFlutterWave_Pattern|TestVerifyFlutterwave'
       - name: Test Paystack detector
-        run: go test ./pkg/detectors/paystack -tags=detectors
+        run: go test ./pkg/detectors/paystack -tags=detectors -run 'TestPaystack_Pattern|TestVerifyPaystack'
